@@ -1,44 +1,82 @@
 // src/components/Blog.js
 import React from "react";
+import { Link } from "react-router-dom";
 
-const posts = [
+const blogPosts = [
   {
     id: 1,
-    title: "¿Qué es el desarrollo web?",
-    summary: "Una guía rápida sobre frontend, backend y cómo funcionan juntos en una web moderna.",
-    date: "Julio 2025",
+    title: "Cómo Cotizar Servicios Web sin Ahuyentar a Clientes",
+    description:
+      "Guía para establecer precios justos y comunicar valor en el mercado argentino.",
+    route: "/blog/cotizar-servicios",
+    pdf: "/Ideas de valor comercial 1.pdf",
   },
   {
     id: 2,
-    title: "Diseño web responsivo con Tailwind",
-    summary: "Cómo usar Tailwind para crear sitios que se ven bien en cualquier dispositivo.",
-    date: "Julio 2025",
+    title: "Modelos de Sitio Web y Costos Transparentes",
+    description:
+      "Comparativa entre sitios básicos, corporativos y e-commerce con precios actualizados.",
+    route: "/blog/modelos-sitios",
+    pdf: "/Ideas de valor comercial 3.pdf",
   },
   {
     id: 3,
-    title: "React + PHP: Proyecto desde cero",
-    summary: "Un vistazo a cómo integrar React con un backend en PHP para sitios dinámicos.",
-    date: "Julio 2025",
+    title: "El precio lo fijás vos: Pagá si te gusta",
+    description:
+      "Una propuesta innovadora para captar clientes que valoran el trabajo profesional.",
+    route: "/blog/paga-si-te-gusta",
+    pdf: "#",
   },
 ];
 
-export default function Blog() {
+const Blog = () => {
   return (
-    <section id="blog" className="py-16 px-4 sm:px-8 lg:px-16 bg-white dark:bg-gray-900 transition duration-300">
-      <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-10">Blog</h2>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
+    <section
+      id="blog"
+      className="py-20 px-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300"
+    >
+      <h2 className="text-3xl font-bold text-center mb-16 text-cyan-500">
+        Blog
+      </h2>
+
+      <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        {blogPosts.map((post) => (
           <div
             key={post.id}
-            className="bg-gray-100 dark:bg-gray-800 rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300"
+            className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-6 flex flex-col justify-between hover:shadow-xl hover:scale-105 hover:blur-[0.3px] transition-transform duration-300 ease-in-out"
           >
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{post.title}</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{post.date}</p>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">{post.summary}</p>
-            <button className="text-sm text-teal-500 hover:underline">Leer más →</button>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                {post.description}
+              </p>
+            </div>
+
+            <div className="mt-4 flex flex-col gap-3">
+              {post.pdf !== "#" && (
+                <a
+                  href={post.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white text-sm px-4 py-2 rounded-full text-center transition"
+                >
+                  Ver PDF
+                </a>
+              )}
+              <Link
+                to={post.route}
+                className="bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm px-4 py-2 rounded-full text-center transition"
+              >
+                Seguir leyendo →
+              </Link>
+            </div>
           </div>
         ))}
       </div>
     </section>
   );
-}
+};
+
+export default Blog;
+
+

@@ -1,11 +1,9 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Portfolio from "./components/Portfolio";
-import Blog from "./components/Blog";
-import Contacto from "./components/Contacto";
-import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+
+import MainLayout from "./layout/MainLayout";
+import CotizarServicios from "./pages/CotizarServicios";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -22,15 +20,13 @@ function App() {
   return (
     <div className={`font-sans ${darkMode ? "dark" : ""}`}>
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-        <Navbar
-          darkMode={darkMode}
-          toggleDarkMode={() => setDarkMode(!darkMode)}
-        />
-        <Hero />
-        <Portfolio />
-        <Blog />
-        <Contacto />
-        <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={<MainLayout darkMode={darkMode} toggleDarkMode={() => setDarkMode(!darkMode)} />}
+          />
+          <Route path="/blog/cotizar-servicios" element={<CotizarServicios />} />
+        </Routes>
 
         {/* Botón flotante de WhatsApp */}
         <a
@@ -57,3 +53,4 @@ function App() {
 }
 
 export default App;
+
