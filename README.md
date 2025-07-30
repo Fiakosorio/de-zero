@@ -16,7 +16,7 @@ Soy un desarrollador web autodidacta con pasión por el código limpio, el dise�
 
 Actualmente estoy trabajando en:
 - 🚀 **de Zero**: Mi sitio web personal (React + Tailwind + PHP)
-- 🛒 **TU BOX**: Portfolio/Tienda web digital con WordPress.org + WooCommerce
+- 🛒 **Zero Express**: Tienda web digital con WordPress.org + WooCommerce
 
 🎯 Busco oportunidades remotas donde pueda aportar valor, seguir aprendiendo y trabajar con empresas o clientes de todo el mundo.
 
@@ -26,6 +26,6 @@ Actualmente estoy trabajando en:
 
 💡 HTML | CSS | JavaScript
 ⚛️ React | TailwindCSS | Git
-💻 PHP | MySQL
+💻 PHP | MySQL | Firebase Google
 📝 WordPress.org | WooCommerce
-🔌 API Rest (básico) | JSON | GitHub Pages | Netlify
+🔌 API Rest | JSON | GitHub Pages | Netlify
