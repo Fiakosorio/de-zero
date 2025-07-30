@@ -23,3 +23,9 @@ Actualmente estoy trabajando en:
 ---
 
 ### 🛠️ Tecnologías que manejo
+
+💡 HTML | CSS | JavaScript
+⚛️ React | TailwindCSS | Git
+💻 PHP | MySQL
+📝 WordPress.org | WooCommerce
+🔌 API Rest (básico) | JSON | GitHub Pages | Netlify
