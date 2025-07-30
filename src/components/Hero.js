@@ -4,26 +4,28 @@ import React from "react";
 const Hero = () => {
   return (
     <section
-      id="home"
-      className="min-h-screen flex items-center justify-center px-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300"
+      id="hero"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-gradient-to-br from-cyan-100 via-white to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors"
     >
-      <div className="text-center max-w-3xl">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-          Bienvenidos a <span className="text-cyan-500">de Zero</span>
-        </h1>
-        <p className="text-lg sm:text-xl mb-6 text-gray-800 dark:text-gray-300">
-          ¡Hola! Soy desarrollador web especializado en la creación de sitios modernos y adaptables.
-        </p>
-        <a
-          href="#portfolio"
-          className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300"
-        >
-          Comencemos
-        </a>
-      </div>
+      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        Bienvenidos a <span className="text-cyan-500">de Zero</span>
+      </h1>
+
+      <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mb-6">
+        ¡Hola! Soy desarrollador web especializado en la creación de sitios
+        modernos, escalables y adaptables. Ayudo a profesionales y negocios a tener presencia online con identidad visual propia.
+      </p>
+
+      <a
+        href="#servicios"
+        className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full text-lg font-semibold transition"
+      >
+        Comencemos →
+      </a>
     </section>
   );
 };
 
 export default Hero;
+
 
