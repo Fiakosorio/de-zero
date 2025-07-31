@@ -1,36 +1,36 @@
 // src/components/Navbar.js
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../firebase/config";
+import { FiMenu, FiX } from "react-icons/fi";
 import LoginPopup from "./LoginPopup";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
-  const [user, setUser] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-    });
-    return () => unsubscribe();
-  }, []);
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
-  const handleLogout = () => {
-    signOut(auth);
-  };
+  const navLinks = [
+    { to: "hero", label: "Inicio" },
+    { to: "servicios", label: "Servicios" },
+    { to: "portfolio", label: "Portfolio" },
+    { to: "blog", label: "Blog" },
+    { to: "contacto", label: "Contacto" }
+  ];
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
+    <header className="bg-white dark:bg-gray-800 shadow sticky top-0 z-50 w-full">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold text-cyan-500">de Zero</h1>
-        <ul className="flex space-x-6 text-cyan-500 font-semibold">
-          {[
-            { to: "hero", label: "Inicio" },
-            { to: "servicios", label: "Servicios" },
-            { to: "portfolio", label: "Portfolio" },
-            { to: "blog", label: "Blog" },
-            { to: "contacto", label: "Contacto" }
-          ].map(({ to, label }) => (
+
+        <div className="lg:hidden">
+          <button onClick={toggleMenu} className="text-cyan-500 text-2xl">
+            {isOpen ? <FiX /> : <FiMenu />}
+          </button>
+        </div>
+
+        <ul className={`lg:flex space-x-6 text-cyan-500 font-semibold hidden`}>
+          {navLinks.map(({ to, label }) => (
             <li key={to}>
               <ScrollLink
                 to={to}
@@ -47,7 +47,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           ))}
         </ul>
 
-        <div className="flex items-center space-x-4">
+        <div className="hidden lg:flex items-center space-x-4">
           <button
             onClick={toggleDarkMode}
             className="px-3 py-1 text-white bg-cyan-500 dark:bg-cyan-600 rounded-full transition-all duration-300 hover:scale-105"
@@ -55,24 +55,38 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           >
             {darkMode ? "☀ Claro" : "🌙 Oscuro"}
           </button>
-
-          {user ? (
-            <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-700 dark:text-gray-300 font-semibold">
-                ¡Bienvenido, {user.displayName?.toUpperCase() || "USUARIO"} 👋
-              </span>
-              <button
-                onClick={handleLogout}
-                className="text-sm px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-full transition"
-              >
-                Cerrar sesión
-              </button>
-            </div>
-          ) : (
-            <LoginPopup />
-          )}
+          <LoginPopup />
         </div>
       </nav>
+
+      {/* Menú móvil */}
+      {isOpen && (
+        <div className="lg:hidden bg-white dark:bg-gray-800 px-6 py-4 space-y-4 shadow-md">
+          {navLinks.map(({ to, label }) => (
+            <ScrollLink
+              key={to}
+              to={to}
+              smooth={true}
+              duration={600}
+              offset={-70}
+              onClick={closeMenu}
+              className="block text-cyan-600 dark:text-cyan-400 font-semibold hover:underline cursor-pointer"
+            >
+              {label}
+            </ScrollLink>
+          ))}
+
+          <div className="flex justify-between items-center mt-4">
+            <button
+              onClick={toggleDarkMode}
+              className="px-3 py-1 text-white bg-cyan-500 dark:bg-cyan-600 rounded-full transition"
+            >
+              {darkMode ? "☀ Claro" : "🌙 Oscuro"}
+            </button>
+            <LoginPopup />
+          </div>
+        </div>
+      )}
     </header>
   );
 };
