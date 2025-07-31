@@ -39,7 +39,7 @@ const ModelosSitios = () => {
 
         <div className="text-center mt-10">
           <img
-            src="/modelo-web-ejemplo.png"
+            src={process.env.PUBLIC_URL + "/modelo-web-ejemplo.png"}
             alt="Ejemplo visual de estructura web"
             className="mx-auto w-full max-w-xl rounded shadow-md"
           />

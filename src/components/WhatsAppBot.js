@@ -11,7 +11,7 @@ const WhatsAppBot = () => {
       title="Escribime por WhatsApp"
     >
       <img
-        src="/whatsapp-icon.png"
+        src={process.env.PUBLIC_URL + "/whatsapp-icon.png"}
         alt="WhatsApp"
         className="w-9 h-9"
         onError={(e) => {
