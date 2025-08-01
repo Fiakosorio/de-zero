@@ -34,7 +34,7 @@ const Blog = () => {
               Estrategias reales para presentar tus precios con claridad y mantener el interés de potenciales clientes.
             </p>
             <Link
-              to="/blog/md/cotizar-servicios"
+              to="blog/cotizar-servicios"
               className="inline-block mt-4 text-cyan-600 dark:text-cyan-400 hover:underline"
             >
               Leer artículo completo →
