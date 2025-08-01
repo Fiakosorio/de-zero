@@ -29,7 +29,6 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   return (
     <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50 w-full">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
         <h1 className="text-2xl font-bold text-cyan-500">de Zero</h1>
 
         {/* Menú Desktop */}
@@ -50,9 +49,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           ))}
         </ul>
 
-        {/* Controles derecho */}
+        {/* Controles derechos */}
         <div className="flex items-center space-x-4">
-          {/* Botón Modo */}
+          {/* Botón Tema fuera del perfil */}
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:scale-105 transition-transform duration-300"
@@ -65,7 +64,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             )}
           </button>
 
-          {/* Sesión */}
+          {/* Inicio de sesión / Perfil */}
           {user ? (
             <UserProfileMenu
               user={user}
@@ -112,3 +111,4 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 };
 
 export default Navbar;
+

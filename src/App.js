@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainLayout from "./layout/MainLayout";
 import ModelosSitios from "./pages/ModelosSitios";
@@ -12,30 +12,33 @@ function App() {
 
   useEffect(() => {
     const root = document.documentElement;
-    darkMode
-      ? root.classList.add("dark")
-      : root.classList.remove("dark");
+    darkMode ? root.classList.add("dark") : root.classList.remove("dark");
   }, [darkMode]);
 
   return (
-    <div className={`font-sans ${darkMode ? "dark" : ""}`}>
-      <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <MainLayout
-                darkMode={darkMode}
-                toggleDarkMode={() => setDarkMode(!darkMode)}
-              />
-            }
-          />
-          <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
-          <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
-          <Route path="/blog/cotizar-servicios" element={<CotizarServicios />} />
-        </Routes>
+    <BrowserRouter basename="/de-zero">
+      <div className={`font-sans ${darkMode ? "dark" : ""}`}>
+        <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MainLayout
+                  darkMode={darkMode}
+                  toggleDarkMode={() => setDarkMode(!darkMode)}
+                />
+              }
+            />
+            <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
+            <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
+            <Route
+              path="/blog/cotizar-servicios"
+              element={<CotizarServicios />}
+            />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
