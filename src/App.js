@@ -16,29 +16,27 @@ function App() {
   }, [darkMode]);
 
   return (
-    <BrowserRouter basename="/de-zero">
-      <div className={`font-sans ${darkMode ? "dark" : ""}`}>
-        <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MainLayout
-                  darkMode={darkMode}
-                  toggleDarkMode={() => setDarkMode(!darkMode)}
-                />
-              }
-            />
-            <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
-            <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
-            <Route
-              path="/blog/cotizar-servicios"
-              element={<CotizarServicios />}
-            />
-          </Routes>
-        </div>
+    <div className={`font-sans ${darkMode ? "dark" : ""}`}>
+      <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MainLayout
+                darkMode={darkMode}
+                toggleDarkMode={() => setDarkMode(!darkMode)}
+              />
+            }
+          />
+          <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
+          <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
+          <Route
+            path="/blog/cotizar-servicios"
+            element={<CotizarServicios />}
+          />
+        </Routes>
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 
