@@ -1,105 +1,104 @@
 // src/components/Footer.js
 import React from "react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaArrowUp,
-  FaFileDownload,
-} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white pt-10 pb-6 px-6 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-        {/* Sección de navegación */}
+    <footer className="bg-gray-800 dark:bg-gray-900 text-white py-10 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        
+        {/* Columna 1: de Zero */}
         <div>
-          <h3 className="font-semibold mb-2 text-cyan-500">Enlaces útiles</h3>
-          <ul className="space-y-1">
-            <li>
-              <a href="#home" className="hover:underline">
+          <h4 className="text-lg font-bold mb-4 text-cyan-400">De Zero</h4>
+          <ul>
+            <li className="mb-2">
+              <Link to="/#hero" className="hover:text-cyan-400 transition-colors">
                 Inicio
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="#portfolio" className="hover:underline">
-                Portfolio
-              </a>
+            <li className="mb-2">
+              <Link to="/#servicios" className="hover:text-cyan-400 transition-colors">
+                Servicios
+              </Link>
             </li>
-            <li>
-              <a href="#blog" className="hover:underline">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:underline">
+            <li className="mb-2">
+              <Link to="/#contacto" className="hover:text-cyan-400 transition-colors">
                 Contacto
+              </Link>
+            </li>
+          </ul>
+        </div>
+        
+        {/* Columna 2: Recursos de Negocio */}
+        <div>
+          <h4 className="text-lg font-bold mb-4 text-cyan-400">Recursos</h4>
+          <ul>
+            <li className="mb-2">
+              <Link to="/blog/modelos-sitios" className="hover:text-cyan-400 transition-colors">
+                Modelos y Precios
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/blog/cotizar-servicios" className="hover:text-cyan-400 transition-colors">
+                Metodología
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/blog" className="hover:text-cyan-400 transition-colors">
+                Blog y Guías
+              </Link>
+            </li>
+          </ul>
+        </div>
+        
+        {/* Columna 3: Conectate */}
+        <div>
+          <h4 className="text-lg font-bold mb-4 text-cyan-400">Conectate</h4>
+          <ul>
+            {/* ENLACES A TUS REDES SOCIALES O LINKEDIN DE NEGOCIO */}
+            <li className="mb-2">
+              <a href="https://www.linkedin.com/in/fiakosorio/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
+                LinkedIn
               </a>
             </li>
-            <li>
-              <a href="/politica" className="hover:underline">
-                Política de Privacidad
+            {/* ESTOS YA NO SON ENLACES PERSONALES, SON PARA QUE CONTACTEN AL NEGOCIO */}
+            <li className="mb-2">
+              <a href="mailto:tu-correo@ejemplo.com" className="hover:text-cyan-400 transition-colors">
+                Email
               </a>
             </li>
           </ul>
         </div>
 
-        {/* Sección de redes sociales */}
+        {/* Columna 4: Legal y Sostenibilidad */}
         <div>
-          <h3 className="font-semibold mb-2 text-cyan-500">Redes Sociales</h3>
-          <div className="flex space-x-4 text-cyan-500 text-lg">
-            <a
-              href="https://github.com/Fiakosorio"
-              target="_blank"
-              rel="noreferrer"
-              title="GitHub"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jmosorio-1982"
-              target="_blank"
-              rel="noreferrer"
-              title="LinkedIn"
-            >
-              <FaLinkedin />
-            </a>
-            <a href="mailto:juanmosorio1982@gmail.com" title="Email">
-              <FaEnvelope />
-            </a>
-            <a
-              href="https://fiakosorio.github.io/CV-Responsive/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Ver CV"
-            >
-              <FaFileDownload />
-            </a>
-          </div>
+          <h4 className="text-lg font-bold mb-4 text-cyan-400">Sostenibilidad</h4>
+          <ul>
+             <li className="mb-2">
+              <Link to="/blog/paga-si-te-gusta" className="hover:text-cyan-400 transition-colors">
+                Aportá al Proyecto
+              </Link>
+            </li>
+            <li className="mb-2">
+              <a href="/politicas-privacidad" className="hover:text-cyan-400 transition-colors">
+                Política de Privacidad
+              </a>
+            </li>
+            <li className="mb-2">
+              <a href="/terminos-servicio" className="hover:text-cyan-400 transition-colors">
+                Términos y Condiciones
+              </a>
+            </li>
+          </ul>
         </div>
 
-        {/* Marca y derechos */}
-        <div>
-          <h3 className="font-semibold mb-2 text-cyan-500">de Zero</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            © {new Date().getFullYear()} Todos los derechos reservados. <br />
-            Sitio creado desde cero por Juan Manuel Osorio.
-          </p>
-        </div>
       </div>
 
-      {/* Botón Scroll Up */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-20 right-4 z-50 bg-cyan-500 hover:bg-cyan-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-xl transition-transform duration-300"
-        title="Volver arriba"
-      >
-        <FaArrowUp size={20} />
-      </button>
+      <div className="max-w-6xl mx-auto px-6 border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+        &copy; {currentYear} de Zero. Todos los derechos reservados.
+      </div>
     </footer>
   );
 };
