@@ -1,109 +1,64 @@
-// src/pages/CotizarServicios.js
 import React from "react";
+import { Link } from "react-router-dom"; 
 
 const CotizarServicios = () => {
   return (
     <section className="min-h-screen py-20 px-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
       <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl font-bold text-cyan-500 mb-6">
-          💰 Cómo Cotizar Servicios Web sin Ahuyentar a tus Clientes
+        <h1 className="text-4xl font-extrabold text-cyan-500 mb-6">
+          ✨ Transparencia Total: Así Definimos el Valor de tu Proyecto
         </h1>
-        <p className="text-lg mb-4">
-          En <strong>de Zero</strong> entendemos que el precio es parte del
-          valor, pero <strong>no lo es todo</strong>. Presentar tu propuesta con
-          claridad y seguridad genera más confianza que simplemente tirar un
-          número.
+        <p className="text-xl mb-8 text-gray-700 dark:text-gray-300 leading-relaxed">
+          En <strong>de Zero</strong>, no cotizamos por horas, sino por el <strong>valor real</strong> que tu web generará para tu negocio. Nuestra metodología es clara, profesional y 100% transparente.
         </p>
 
-        <div className="text-left space-y-4 my-10">
-          <h2 className="text-2xl font-semibold text-cyan-600">
-            🎯 Estrategia
-          </h2>
-          <p>
-            Cotizamos en base a paquetes: Landing Page, Web Corporativa,
-            eCommerce... Mostramos los beneficios que el cliente obtiene:
-            velocidad, posicionamiento SEO, diseño adaptativo, soporte técnico.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-cyan-600">
-            📊 Educamos al cliente
-          </h2>
-          <p>
-            No vendemos un archivo .zip, ofrecemos{" "}
-            <strong>una solución a medida</strong> para su negocio. Mostramos
-            ejemplos, resultados y beneficios concretos.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-cyan-600">🤝 Confianza</h2>
-          <p>
-            Somos transparentes. Mostramos precios desde, tiempos estimados y
-            qué incluye cada entrega. Brindamos seguridad al cliente.
-          </p>
-        </div>
-
-        <div className="min-h-screen px-4 py-12 bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-teal-400">
-              💡 Escuchar tus proyectos para poder inspirar
-            </h1>
-
-            <img
-              src="https://images.unsplash.com/photo-1657697071046-1eef624e96e9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="cotizar servicios"
-              className="w-full rounded-xl shadow-lg mb-10"
-            />
-
-            <p className="mb-6 text-lg leading-relaxed">
-              Cotizar correctamente tus servicios es un arte que combina
-              comunicación, claridad y profesionalismo. A continuación, te
-              compartimos consejos clave para que puedas cotizar sin miedo a
-              perder clientes:
+        <div className="text-left space-y-8 my-10">
+          
+          <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-xl">
+            <h2 className="text-2xl font-bold mb-3 text-cyan-600 dark:text-cyan-400 border-b border-cyan-500/30 pb-2">
+              1. Definición Clara del Alcance
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              <strong>El Punto Clave:</strong> Nunca te vamos a cobrar un extra por algo que no acordamos al inicio. <br />Definimos claramente qué incluye el paquete de servicio (Web Básica, Negocio, Venta) y qué queda <strong>afuera</strong>. ¡Cero sorpresas al final!
             </p>
+          </div>
 
-            <ul className="list-disc pl-6 mb-6 space-y-3 text-base leading-relaxed">
-              <li>
-                📌 Escuchamos primero qué necesita el cliente y hacemos
-                preguntas inteligentes.
-              </li>
-              <li>
-                💡 No damos precios por impulso: analizamos el alcance del
-                trabajo.
-              </li>
-              <li>
-                📊 Ofrecemos opciones escalonadas si es posible (básico,
-                intermedio, premium).
-              </li>
-              <li>
-                📝 Enviamos tu cotización de forma clara, profesional y
-                personalizada.
-              </li>
-              <li>
-                ⏱️ Incluímos tiempos estimados, revisiones y condiciones claras.
-              </li>
-            </ul>
+          <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-xl">
+            <h2 className="text-2xl font-bold mb-3 text-cyan-600 dark:text-cyan-400 border-b border-cyan-500/30 pb-2">
+              2. El Foco está en la Solución
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              Nuestro precio se basa en la <strong>solución</strong> que te vamos a entregar para tu problema de negocio (más clientes, mejor imagen, más ventas). <br />Te presentamos un abanico de paquetes funcionales para que elijas la solución que mejor se adapte a tu necesidad y presupuesto.
+            </p>
+          </div>
 
-            <p className="text-lg font-semibold text-center mt-10 text-teal-300">
-              Recordá: No vendo solo mi tiempo, sino mi experiencia. Valorate, y
-              los demás también lo harán.
+          <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-xl">
+            <h2 className="text-2xl font-bold mb-3 text-cyan-600 dark:text-cyan-400 border-b border-cyan-500/30 pb-2">
+              3. Propuesta Formal y Detallada
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              Te enviamos una cotización formal que incluye todo, detallando:
+              <ul className="list-disc list-inside mt-2 ml-4 space-y-1">
+                <li>✅ El objetivo a lograr.</li>
+                <li>✅ El paquete de servicios elegido.</li>
+                <li>✅ Los tiempos de entrega estimados (sin vueltas).</li>
+                <li>✅ El valor final de la inversión.</li>
+              </ul>
             </p>
           </div>
         </div>
-        <div className="bg-cyan-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg mt-10">
-          <p className="text-lg font-semibold mb-2">
-            💸 Podés apoyar nuestro trabajo con un aporte libre:
-          </p>
-          <a
-            href="https://link.mercadopago.com.ar/dezer0m0nt0libr3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-3 bg-cyan-600 text-white px-6 py-3 rounded-lg shadow hover:bg-cyan-700 transition"
-          >
-            Aportar vía Mercado Pago
-          </a>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-12">
-            Artículo adaptado de la serie “Ideas de Valor Comercial” – de Zero™.
-          </p>
+        <p className="text-2xl font-extrabold mt-10 text-red-500 dark:text-red-400 border-t pt-5 border-gray-300 dark:border-gray-700">
+          El precio es una consecuencia de la estrategia, no el punto de partida.
+        </p>
+
+        <div className="mt-12 text-center">
+            <Link
+                to="/"
+                className="bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-3 rounded-full cursor-pointer transition shadow-md hover:shadow-lg"
+            >
+                Quiero que me cotices una web →
+            </Link>
         </div>
       </div>
     </section>

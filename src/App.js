@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "./layout/MainLayout";
 import ModelosSitios from "./pages/ModelosSitios";
@@ -18,8 +18,9 @@ function App() {
   return (
     <div className={`font-sans ${darkMode ? "dark" : ""}`}>
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-        <Routes>
+        <Routes> 
           <Route
+            // La ruta principal siempre será "/" en el router
             path="/"
             element={
               <MainLayout
@@ -28,6 +29,7 @@ function App() {
               />
             }
           />
+          {/* Rutas secundarias del blog */}
           <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
           <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
           <Route
