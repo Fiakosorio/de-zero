@@ -8,14 +8,14 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 pb-10 bg-white dark:bg-gray-900 transition-colors duration-500 overflow-hidden"
     >
-      {/* Fondo con efecto Grid (Asegurate de tener la clase en index.css) */}
+      {/* Fondo con efecto Grid */}
       <div className="absolute inset-0 pointer-events-none bg-grid-pattern z-0"></div>
       
-      {/* Degradado para suavizar la unión con el siguiente componente (opcional pero queda pro) */}
+      {/* Degradado inferior */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-900 to-transparent z-1"></div>
 
-      {/* Contenido Principal (z-10 para que flote sobre el fondo) */}
-      <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
+      {/* Contenido Principal con ANIMACIÓN FADE-IN AGREGADA */}
+      <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto animate-fadeIn">
         <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-8 leading-tight tracking-tight">
           ¿Empezar desde cero te asusta?
           <br />
@@ -32,7 +32,7 @@ const Hero = () => {
 
         <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
           <ScrollLink
-            to="contact" // Acordate que corregimos el ID a "contact"
+            to="contact"
             smooth={true}
             duration={800}
             offset={-70}
@@ -42,7 +42,7 @@ const Hero = () => {
           </ScrollLink>
 
           <ScrollLink
-            to="servicios"
+            to="servicios" // Asegurate de tener una sección con id="servicios"
             smooth={true}
             duration={800}
             offset={-70}

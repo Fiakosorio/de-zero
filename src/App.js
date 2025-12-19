@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Quitamos TechStack de acá porque lo vamos a mover a MainLayout
 import MainLayout from "./layout/MainLayout";
 import ModelosSitios from "./pages/ModelosSitios";
 import PagaSiTeGusta from "./pages/PagaSiTeGusta";
@@ -20,7 +21,6 @@ function App() {
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
         <Routes> 
           <Route
-            // La ruta principal siempre será "/" en el router
             path="/"
             element={
               <MainLayout
@@ -29,13 +29,10 @@ function App() {
               />
             }
           />
-          {/* Rutas secundarias del blog */}
+          {/* Rutas secundarias */}
           <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
           <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
-          <Route
-            path="/blog/cotizar-servicios"
-            element={<CotizarServicios />}
-          />
+          <Route path="/blog/cotizar-servicios" element={<CotizarServicios />} />
         </Routes>
       </div>
     </div>
