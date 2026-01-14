@@ -1,89 +1,48 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; 
+import React, { useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const PagaSiTeGusta = () => {
-  const [monto, setMonto] = useState("");
-
-  const handlePagar = () => {
-    // Usamos un valor fijo si el monto es inválido, sino el monto ingresado
-    let finalAmount = monto; 
-    if (!monto || isNaN(monto) || Number(monto) <= 0) {
-      finalAmount = "aporte-libre"; // Placeholder para el link de Mercado Pago
-    }
-    
-    // ATENCIÓN: Enlace de ejemplo. Adaptalo a tu link real de Mercado Pago si lo usas.
-    const enlacePersonal = `https://link.mercadopago.com.ar/dezer0?monto=${finalAmount}`; 
-
-    alert(`Redirigiendo a Mercado Pago para un aporte de: ${finalAmount === 'aporte-libre' ? 'Monto Libre' : `$${finalAmount}`}`);
-    // En producción, usar: window.open(enlacePersonal, "_blank");
-  };
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen py-20 px-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-500">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl font-extrabold mb-4 text-cyan-500">
-          ✨ El precio lo fijás vos: Pagá si te gustó el valor
-        </h1>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-          Este modelo es exclusivo para nuestras <strong>Guías, Instructivos y Contenido de Aprendizaje (IA, Desarrollo Web, Automatización)</strong>. 
-          Leé, aplicá y si el material te generó valor, hacé el aporte que te parezca justo.
-        </p>
+    <div className="bg-slate-50 dark:bg-gray-900 min-h-screen transition-colors duration-500">
+      <Navbar />
+      <div className="pt-32 pb-20 container mx-auto px-6 max-w-3xl">
+        <div className="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-3xl shadow-xl border-2 border-transparent hover:border-cyan-500 transition-all duration-300">
+          <span className="text-cyan-500 font-bold uppercase tracking-widest text-sm">Confianza</span>
+          <h1 className="text-4xl md:text-5xl font-black mt-4 mb-8 text-gray-900 dark:text-white leading-tight">
+            Paga si te gusta - Mi modelo de confianza
+          </h1>
+          
+          <div className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300 space-y-6">
+            <p>Arrancás un negocio y el primer obstáculo es meter guita sin saber si el resultado va a ser bueno. Te prometen "la mejor web", pero hasta que no pagás todo, no ves nada. Conozco esa sensación porque la viví. Por eso trabajo distinto.</p>
+            
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Cómo funciona mi modelo</h2>
+            <ul className="space-y-4">
+              <li><strong>Hablamos de tu proyecto</strong> — Me contás qué necesitás, te digo si puedo hacerlo.</li>
+              <li><strong>Te mando un presupuesto claro</strong> — Sin sorpresas, sin letra chica.</li>
+              <li><strong>Arranco el trabajo</strong> — Sí, sin cobrar nada todavía.</li>
+              <li><strong>Te voy mostrando avances</strong> — No espero a terminar todo para que veas algo.</li>
+              <li><strong>Entrego la versión final</strong> — Revisás todo, probás todo.</li>
+              <li><strong>Si te gusta, pagás</strong> — Si no te convence al 100%, no pagás.</li>
+            </ul>
 
-        {/* SECCIÓN DE APORTE */}
-        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-8 shadow-2xl border-t-4 border-green-500">
-          <h3 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">
-            ¿Cuánto vale para vos el conocimiento?
-          </h3>
-          <p className="text-base text-gray-700 dark:text-gray-300 mb-6">
-            Ingresá el monto que consideres justo por la guía que acabás de usar:
-          </p>
+            <h3 className="text-xl font-bold text-red-500 uppercase">¿Y si alguien me caga?</h3>
+            <p>Puede pasar. Hasta ahora no me pasó, pero sé que algún día va a pasar. Y está bien, es parte del juego. Prefiero perder 1 de cada 20 proyectos antes que obligar a alguien a pagar por algo que no le sirve.</p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <input
-              type="number"
-              value={monto}
-              onChange={(e) => setMonto(e.target.value)}
-              placeholder="Monto de Aporte (Ej: 500, 1000)"
-              className="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg w-full sm:w-1/2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white text-center focus:ring-cyan-500 focus:border-cyan-500"
-              min="1"
-            />
-            <button
-              onClick={handlePagar}
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition w-full sm:w-auto shadow-md"
-            >
-              Aportar vía Mercado Pago 🚀
-            </button>
+            <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl border-l-4 border-indigo-500">
+              <h4 className="font-bold text-indigo-600 dark:text-indigo-400 mb-2">Aplica para:</h4>
+              <p className="text-sm">Landing pages, sitios institucionales, rediseños y proyectos de hasta 15 días.</p>
+            </div>
+
+            <p className="font-bold text-gray-900 dark:text-white text-xl text-center py-6">
+              ¿Te copa trabajar así? Escribime por WhatsApp y charlamos de tu proyecto sin compromiso.
+            </p>
           </div>
-
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-            El pago se realiza por única vez a través de Mercado Pago.
-          </p>
-        </div>
-
-        <div className="mt-12 text-left">
-          <h3 className="text-2xl font-bold text-cyan-500 mb-4">¿Por qué hacemos esto?</h3>
-          <ul className="space-y-3 text-lg text-gray-700 dark:text-gray-300 list-disc list-inside ml-4">
-            <li>
-              <strong>Confianza:</strong> Queremos demostrar que nuestro material es útil <strong>antes</strong> de pedir algo a cambio.
-            </li>
-            <li>
-              <strong>Compromiso:</strong> Solo invertís si creés que el conocimiento te va a hacer generar más plata o ahorrar tiempo.
-            </li>
-            <li>
-              <strong>Sostenibilidad:</strong> Tu aporte nos permite seguir creando más guías, instructivos y proyectos open source.
-            </li>
-          </ul>
-        </div>
-        
-        <div className="mt-12">
-            <Link
-                to="/#blog"
-                className="text-lg text-cyan-600 dark:text-cyan-400 hover:underline font-semibold"
-            >
-                ← Volver al Blog
-            </Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

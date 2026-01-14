@@ -1,41 +1,50 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-
-// Quitamos TechStack de acá porque lo vamos a mover a MainLayout
+import { Routes, Route, useLocation } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
-import ModelosSitios from "./pages/ModelosSitios";
+import DisenoWeb from "./pages/DisenoWeb";
+import Automatizacion from "./pages/Automatizacion";
+import Ecommerce from "./pages/Ecommerce";
+import ContactoPage from "./pages/ContactoPage";
 import PagaSiTeGusta from "./pages/PagaSiTeGusta";
-import CotizarServicios from "./pages/CotizarServicios";
+import ErroresVentas from "./pages/ErroresVentas";
+import ModelosSitios from "./pages/ModelosSitios";
+import Politicas from "./pages/Politicas";
+import Terminos from "./pages/Terminos";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  // Lógica robusta para modo oscuro
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Aplica la clase al HTML directo
   useEffect(() => {
-    const root = document.documentElement;
-    darkMode ? root.classList.add("dark") : root.classList.remove("dark");
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
   }, [darkMode]);
 
   return (
-    <div className={`font-sans ${darkMode ? "dark" : ""}`}>
-      <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-        <Routes> 
-          <Route
-            path="/"
-            element={
-              <MainLayout
-                darkMode={darkMode}
-                toggleDarkMode={() => setDarkMode(!darkMode)}
-              />
-            }
-          />
-          {/* Rutas secundarias */}
-          <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
-          <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
-          <Route path="/blog/cotizar-servicios" element={<CotizarServicios />} />
-        </Routes>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<MainLayout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+      <Route path="/diseno-web" element={<DisenoWeb darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+      <Route path="/automatizacion" element={<Automatizacion darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+      <Route path="/ecommerce" element={<Ecommerce darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+      <Route path="/contacto" element={<ContactoPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+      <Route path="/blog/paga-si-te-gusta" element={<PagaSiTeGusta />} />
+      <Route path="/blog/errores-ventas" element={<ErroresVentas />} />
+      <Route path="/blog/modelos-sitios" element={<ModelosSitios />} />
+      <Route path="/politicas" element={<Politicas />} />
+      <Route path="/terminos" element={<Terminos />} />
+    </Routes>
   );
 }
 

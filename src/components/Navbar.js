@@ -1,119 +1,75 @@
-// src/components/Navbar.js
 import React, { useState } from "react";
-import { Link as ScrollLink } from "react-scroll";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
-
-  const navItems = [
-    { to: "hero", label: "Inicio" },
-    { to: "servicios", label: "Servicios" },
-    { to: "portfolio", label: "Portfolio" },
-    { to: "blog", label: "Blog" },
-    { to: "contact", label: "Contacto" }, 
-  ];
+  const scrollToTop = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Cierra el menú al clickear
+  };
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50 w-full transition-colors duration-300">
-      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <nav className="absolute w-full z-50 bg-white/95 dark:bg-gray-900/95 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300 font-sans">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
         {/* LOGO */}
-        <div className="flex items-center">
-             <ScrollLink 
-                to="hero" 
-                smooth={true} 
-                className="text-2xl font-bold text-cyan-500 cursor-pointer"
-             >
-                de Zero
-             </ScrollLink>
+        <Link to="/" onClick={scrollToTop} className="text-2xl font-black text-gray-900 dark:text-white tracking-tighter hover:scale-105 transition-transform">
+          de <span className="text-cyan-500">Zero</span>
+        </Link>
+
+        {/* MENÚ DESKTOP (Se oculta en mobile) */}
+        <div className="hidden md:flex items-center space-x-6 bg-slate-100 dark:bg-slate-800 px-8 py-2 rounded-full border border-gray-200 dark:border-gray-700">
+          <Link to="/" onClick={scrollToTop} className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors">Inicio</Link>
+          <a href="/#servicios" className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors">Servicios</a>
+          <a href="/#portfolio" className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors">Portfolio</a>
+          <a href="/#blog" className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors">Blog</a>
+          <a href="/#contacto" className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors">Contacto</a>
         </div>
 
-        {/* Menú Desktop */}
-        <ul className="hidden md:flex space-x-6 text-gray-600 dark:text-gray-300 font-medium items-center">
-          {navItems.map(({ to, label }) => (
-            <li key={to}>
-              <ScrollLink
-                to={to}
-                smooth={true}
-                duration={600}
-                offset={-70}
-                className="cursor-pointer hover:text-cyan-500 transition-colors"
-              >
-                {label}
-              </ScrollLink>
-            </li>
-          ))}
-        </ul>
-
-        {/* Controles derechos (Tema + CTA) */}
-        <div className="flex items-center space-x-4">
-          {/* Botón Tema */}
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:scale-110 transition-transform duration-300 text-gray-800 dark:text-yellow-400"
-            title={darkMode ? "Cambiar a Tema Claro" : "Cambiar a Tema Oscuro"}
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+        <div className="flex items-center space-x-3">
+          {/* BOTÓN MODO OSCURO */}
+          <button onClick={toggleDarkMode} className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300">
+            {darkMode ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            )}
           </button>
 
-          {/* Botón de Acción (CTA) - Reemplaza al Login */}
-          <ScrollLink
-            to="contact"
-            smooth={true}
-            duration={800}
-            offset={-70}
-            className="hidden md:block bg-cyan-600 hover:bg-cyan-700 text-white px-5 py-2 rounded-full font-semibold cursor-pointer transition shadow-md hover:shadow-lg"
+          {/* BOTÓN HAMBURGUESA (Solo se ve en mobile) */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300"
           >
-            Pedir Presupuesto
-          </ScrollLink>
-
-          {/* Menú hamburguesa (Móvil) */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden text-cyan-500 focus:outline-none"
-          >
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMenuOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            )}
           </button>
+
+          <a href="/#contacto" className="hidden lg:block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg">
+            Presupuesto
+          </a>
         </div>
-      </nav>
+      </div>
 
-      {/* Desplegable Móvil */}
-      {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-800 px-6 py-4 shadow-md absolute w-full left-0 border-t dark:border-gray-700">
-          <ul className="space-y-4 text-center">
-            {navItems.map(({ to, label }) => (
-              <li key={to}>
-                <ScrollLink
-                  to={to}
-                  smooth={true}
-                  duration={600}
-                  offset={-70}
-                  onClick={closeMenu}
-                  className="block text-gray-700 dark:text-gray-200 hover:text-cyan-500 text-lg py-2"
-                >
-                  {label}
-                </ScrollLink>
-              </li>
-            ))}
-            {/* Botón CTA en Móvil */}
-            <li>
-                <ScrollLink
-                to="contact"
-                smooth={true}
-                offset={-70}
-                onClick={closeMenu}
-                className="block bg-cyan-600 text-white py-3 rounded-md font-bold mt-4"
-                >
-                Pedir Presupuesto
-                </ScrollLink>
-            </li>
-          </ul>
+      {/* MENÚ DESPLEGABLE MOBILE */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-6 py-8 space-y-4 animate-in slide-in-from-top duration-300">
+          <Link to="/" onClick={scrollToTop} className="block text-lg font-bold text-gray-900 dark:text-white">Inicio</Link>
+          <a href="/#servicios" onClick={() => setIsMenuOpen(false)} className="block text-lg font-bold text-gray-900 dark:text-white">Servicios</a>
+          <a href="/#portfolio" onClick={() => setIsMenuOpen(false)} className="block text-lg font-bold text-gray-900 dark:text-white">Portfolio</a>
+          <a href="/#blog" onClick={() => setIsMenuOpen(false)} className="block text-lg font-bold text-gray-900 dark:text-white">Blog</a>
+          <a href="/#contacto" onClick={() => setIsMenuOpen(false)} className="block text-lg font-bold text-gray-900 dark:text-white">Contacto</a>
+          <a href="/#contacto" onClick={() => setIsMenuOpen(false)} className="block w-full text-center bg-indigo-600 text-white py-4 rounded-xl font-bold shadow-lg">Solicitar Presupuesto</a>
         </div>
       )}
-    </header>
+    </nav>
   );
 };
 

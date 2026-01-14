@@ -1,36 +1,14 @@
 import React from 'react';
 
-// Usamos CDN de Simple Icons que es público y diseñado para esto.
-// No más errores de imagen rota.
+// Usamos CDN de Simple Icons
 const technologies = [
-  { 
-    name: "WordPress", 
-    logo: "https://cdn.simpleicons.org/wordpress" 
-  },
-  { 
-    name: "WooCommerce", 
-    logo: "https://cdn.simpleicons.org/woocommerce" 
-  },
-  { 
-    name: "React", 
-    logo: "https://cdn.simpleicons.org/react" 
-  },
-  { 
-    name: "Make", 
-    logo: "https://cdn.simpleicons.org/make" 
-  },
-  { 
-    name: "n8n", 
-    logo: "https://cdn.simpleicons.org/n8n" 
-  },
-  { 
-    name: "OpenAI", 
-    logo: "https://cdn.simpleicons.org/openai" 
-  },
-  { 
-    name: "GitHub", 
-    logo: "https://cdn.simpleicons.org/github" 
-  }
+  { name: "WordPress", logo: "https://cdn.simpleicons.org/wordpress" },
+  { name: "WooCommerce", logo: "https://cdn.simpleicons.org/woocommerce" },
+  { name: "React", logo: "https://cdn.simpleicons.org/react" },
+  { name: "Make", logo: "https://cdn.simpleicons.org/make" },
+  { name: "n8n", logo: "https://cdn.simpleicons.org/n8n" },
+  { name: "OpenAI", logo: "https://cdn.simpleicons.org/openai" },
+  { name: "GitHub", logo: "https://cdn.simpleicons.org/github" }
 ];
 
 const TechStack = () => {
@@ -42,41 +20,38 @@ const TechStack = () => {
         </p>
       </div>
 
-      {/* Contenedor del Carrusel */}
       <div className="relative w-full overflow-hidden">
-        
-        {/* Degradados laterales para suavizar bordes */}
-        <div className="absolute top-0 left-0 z-10 h-full w-24 bg-gradient-to-r from-white dark:from-gray-900 to-transparent"></div>
-        <div className="absolute top-0 right-0 z-10 h-full w-24 bg-gradient-to-l from-white dark:from-gray-900 to-transparent"></div>
+        {/* Degradados laterales */}
+        <div className="absolute top-0 left-0 z-10 h-full w-16 md:w-24 bg-gradient-to-r from-white dark:from-gray-900 to-transparent"></div>
+        <div className="absolute top-0 right-0 z-10 h-full w-16 md:w-24 bg-gradient-to-l from-white dark:from-gray-900 to-transparent"></div>
 
-        {/* La Cinta que se mueve */}
+        {/* Cinta animada */}
         <div className="flex w-[200%] animate-scroll hover:pause">
           
-          {/* PRIMERA TANDA */}
+          {/* Tanda 1 */}
           <div className="flex w-1/2 justify-around items-center">
             {technologies.map((tech, index) => (
-              <div key={index} className="flex flex-col items-center justify-center px-8 group cursor-pointer">
-                {/* LOGO: Escala de grises por defecto, color al pasar el mouse */}
+              <div key={index} className="flex flex-col items-center justify-center px-4 md:px-8 group">
                 <img 
                   src={tech.logo} 
                   alt={tech.name} 
-                  // Agregamos un control de error por si acaso
                   onError={(e) => {e.target.style.display='none'}} 
-                  className="h-10 w-auto md:h-12 filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  // LA SOLUCIÓN: dark:invert hace que el negro se vuelva blanco en modo oscuro
+                  className="h-8 md:h-12 w-auto filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 dark:invert dark:group-hover:invert-0"
                 />
               </div>
             ))}
           </div>
 
-          {/* SEGUNDA TANDA (Duplicada para efecto infinito) */}
+          {/* Tanda 2 (Duplicada) */}
           <div className="flex w-1/2 justify-around items-center">
             {technologies.map((tech, index) => (
-              <div key={`dup-${index}`} className="flex flex-col items-center justify-center px-8 group cursor-pointer">
+              <div key={`dup-${index}`} className="flex flex-col items-center justify-center px-4 md:px-8 group">
                 <img 
                   src={tech.logo} 
                   alt={tech.name} 
                   onError={(e) => {e.target.style.display='none'}}
-                  className="h-10 w-auto md:h-12 filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  className="h-8 md:h-12 w-auto filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 dark:invert dark:group-hover:invert-0"
                 />
               </div>
             ))}

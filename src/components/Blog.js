@@ -1,68 +1,46 @@
-// src/components/Blog.js
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Blog = () => {
-  return (
-    <section id="blog" className="py-20 px-6 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-10 text-center text-cyan-500">Blog Profesional</h2>
+const posts = [
+  { t: "Paga si te gusta: Mi modelo de confianza", d: "Asumo el riesgo del desarrollo para que vos no tengas ninguno. Solo pagás si te sirve.", link: "/blog/paga-si-te-gusta", tag: "Garantía" },
+  { t: "3 errores que matan las ventas de tu web", d: "Si tu página es lenta o no se ve en el celu, estás regalando plata cada minuto.", link: "/blog/errores-ventas", tag: "Ventas" },
+  { t: "Paquetes Web Llave en Mano", d: "Elegí el modelo que mejor se adapta a tu negocio hoy.", link: "/blog/modelos-sitios", tag: "Packs" }
+];
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Artículo 1 */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-xl hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold text-cyan-500 mb-2">
-              Modelos de Sitio Web y Costos Transparentes
-            </h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              Conocé los tipos de sitios web más comunes que ofrecemos, sus beneficios y precios estimados.
-            </p>
-            <Link
-              to="/blog/modelos-sitios"
-              className="inline-block mt-4 text-cyan-600 dark:text-cyan-400 hover:underline"
-            >
-              Seguir leyendo →
-            </Link>
-          </div>
+const Blog = () => (
+  <section id="blog" className="py-24 bg-white dark:bg-gray-900 transition-colors font-sans border-t border-slate-100 dark:border-slate-800">
+    <div className="max-w-6xl mx-auto px-6">
+      <h2 className="text-4xl font-black text-center mb-16 text-gray-900 dark:text-white tracking-tighter uppercase">
+        Lo que nadie te cuenta
+      </h2>
+      
+      {/* Grid con items de altura igual */}
+      <div className="grid md:grid-cols-3 gap-10">
+        {posts.map((p, i) => (
+          // flex flex-col h-full asegura que la tarjeta ocupe todo el alto disponible
+          <div key={i} className="flex flex-col h-full group bg-slate-100 dark:bg-slate-800/50 p-10 rounded-3xl border-2 border-transparent hover:border-cyan-500 hover:scale-[1.03] transition-all duration-300 shadow-sm">
+            
+            {/* Contenido superior */}
+            <div className="flex-grow">
+              <span className="text-xs font-bold text-cyan-500 uppercase tracking-widest">{p.tag}</span>
+              <h3 className="text-2xl font-bold mt-2 text-gray-900 dark:text-white leading-tight">{p.t}</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed text-sm">{p.d}</p>
+            </div>
 
-          {/* Artículo 2 en Markdown */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-xl hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold text-cyan-500 mb-2">
-              Cómo cotizar servicios sin perder clientes
-            </h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              Estrategias reales para presentar tus precios con claridad y mantener el interés de potenciales clientes.
-            </p>
-            <Link
-              to="blog/cotizar-servicios"
-              className="inline-block mt-4 text-cyan-600 dark:text-cyan-400 hover:underline"
-            >
-              Leer artículo completo →
-            </Link>
-          </div>
+            {/* Botón pegado al fondo (mt-auto) */}
+            <div className="mt-8">
+               <Link to={p.link} className="inline-block w-full text-center px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors">
+                 Leer más
+               </Link>
+            </div>
 
-          {/* Artículo 3: Pagá si te gusta */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-xl hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold text-cyan-500 mb-2">
-              El precio lo fijás vos: Pagá si te gusta
-            </h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              Una propuesta innovadora para captar clientes que valoran el trabajo profesional.
-            </p>
-            <Link
-              to="/blog/paga-si-te-gusta"
-              className="inline-block mt-4 text-cyan-600 dark:text-cyan-400 hover:underline"
-            >
-              Seguir leyendo →
-            </Link>
           </div>
-        </div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Blog;
-
 
 
