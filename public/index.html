@@ -3,20 +3,50 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0f172a" />
     <meta
       name="description"
-      content="de Zero - Soluciones Web y Automatización para tu Negocio"
+      content="de Zero - Agencia de Diseño Web, E-commerce y Automatización en Buenos Aires. Transformamos tu idea en un negocio rentable en 7 días."
     />
     
-    <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" /> 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./logo192.png" />
+    <link rel="manifest" href="./manifest.json" />
 
-    <title>de Zero | Soluciones Web</title>
+    <title>de Zero | Diseño Web y Automatización</title>
+    
+    <style>
+      body { margin: 0; padding: 0; background-color: #0f172a; font-family: sans-serif; }
+      .initial-loader {
+        height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;
+      }
+      .loader-logo { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 1rem; }
+      .loader-spinner {
+        width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
+        border-left-color: #06b6d4; border-radius: 50%; animation: spin 1s linear infinite;
+      }
+      @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
   </head>
   <body>
-    <noscript>Necesitas habilitar JavaScript para ver esta web.</noscript>
-    <div id="root"></div>
+    <noscript>
+      <h1>de Zero - Diseño Web y Automatización</h1>
+      <p>Agencia digital en Buenos Aires especializada en:</p>
+      <ul>
+        <li>Diseño de Páginas Web Profesionales</li>
+        <li>Tiendas Online y E-commerce</li>
+        <li>Automatización de procesos con IA y n8n</li>
+        <li>Landing Pages de alta conversión</li>
+      </ul>
+      <p>Contactanos para digitalizar tu negocio hoy mismo.</p>
+    </noscript>
+
+    <div id="root">
+      <div class="initial-loader">
+        <div class="loader-logo">de <span style="color: #06b6d4;">Zero</span></div>
+        <div class="loader-spinner"></div>
+        <p style="color: #94a3b8; font-size: 0.8rem; margin-top: 20px;">Cargando experiencia...</p>
+      </div>
+    </div>
   </body>
 </html>

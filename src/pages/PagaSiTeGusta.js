@@ -28,8 +28,8 @@ const PagaSiTeGusta = () => {
               <li><strong>Si te gusta, pagás</strong> — Si no te convence al 100%, no pagás.</li>
             </ul>
 
-            <h3 className="text-xl font-bold text-red-500 uppercase">¿Y si alguien me caga?</h3>
-            <p>Puede pasar. Hasta ahora no me pasó, pero sé que algún día va a pasar. Y está bien, es parte del juego. Prefiero perder 1 de cada 20 proyectos antes que obligar a alguien a pagar por algo que no le sirve.</p>
+            <h3 className="text-xl font-bold text-indigo-600 dark:text-cyan-500 uppercase">¿Y si el resultado no es lo que buscabas?</h3>
+            <p>Es simple: mi prioridad es que tu web te sirva para vender. Si al llegar a la entrega final sentís que el sitio no representa tu marca o no cumple con lo que charlamos, no tenés obligación de pagar. Prefiero invertir mi tiempo en un proyecto que te deje 100% conforme antes que cobrar por algo que no te convence. Mi garantía es mi trabajo.</p>
 
             <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl border-l-4 border-indigo-500">
               <h4 className="font-bold text-indigo-600 dark:text-indigo-400 mb-2">Aplica para:</h4>
